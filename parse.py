@@ -137,64 +137,99 @@ def month():
 
 def unsuccessful():
     f = open('main\correct.txt', 'r')
+    count=0
+    file = 0
     for line in f:
         split_f = line.split(' ')
         if '400' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '401' in split_f[8]:
-            print(split_f)        
+            count+=1
+            file+=1
         if '402' in split_f[8]:
-            print(split_f)        
+            count+=1
+            file+=1
         if '403' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '404' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '405' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '406' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '407' in split_f[8]:
-            print(split_f)            
+            count+=1
+            file+=1
         if '408' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '409' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '410' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '411' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '412' in split_f[8]:
-            print(split_f)        
+            count+=1
+            file+=1
         if '413' in split_f[8]:
-            print(split_f)        
+            count+=1
+            file+=1
         if '414' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '415' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '416' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '417' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '418' in split_f[8]:
-            print(split_f)            
+            count+=1
+            file+=1
         if '421' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '422' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '423' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '424' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '426' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '428' in split_f[8]:
-            print(split_f)            
+            count+=1 
+            file+=1
         if '429' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '431' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
         if '451' in split_f[8]:
-            print(split_f)
+            count+=1
+            file+=1
+        else:
+            file+=1
+    print(count)
+    print(file)
+    print((count/file)*100)
     return
 
 main()
