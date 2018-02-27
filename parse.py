@@ -136,7 +136,6 @@ def unsuccessful():
     f = open('main\correct.txt', 'r')
     count=0
     file = 0
-    
     for line in f:
         split_f = line.split(' ')
         if '400' in split_f[8]:
@@ -208,8 +207,7 @@ def unsuccessful():
 def redirect():
     f = open('main\correct.txt', 'r')
     count=0
-    file = 0
-    
+    file=0
     for line in f:
         split_f = line.split(' ')
         if '300' in split_f[8]:
