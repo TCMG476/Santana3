@@ -58,8 +58,8 @@ def main():
     if not os.path.exists(decpath):
         os.makedirs(decpath)    
     
-f = open('accesslog.txt','r')
 def error():
+    f = open('accesslog.txt','r')
     for line in f:
         line.split(' ')
         split_up = line.split(' ')
@@ -74,7 +74,7 @@ def error():
     return
 
 def month():
-    m = open('main\correct.txt', 'r')
+    m=open('main\correct.txt', 'r')
     for line in m:
         split_mon = line.split(' ')
         if "Jan" in split_mon[3]:
@@ -131,9 +131,76 @@ def month():
             e.close()
     return
 
+def totalreq():
+    t = open('accesslog.txt', 'r')
+    count = 0
+    for line in t:
+        count +=1
+    print('1. There were a total of %d requests.\n' % count)
+    return
+
+def dawemo():
+    d=open('main\correct.txt', 'r')
+    count = 0
+    mainlist = []
+    day = 0
+    mon = 0
+    tues = 0
+    wed = 0
+    thurs = 0
+    fri = 0
+    sat = 0
+    sun = 0
+    x = 0
+    day = 1
+    for line in d:
+        split_d = line.split(' ')
+        if len(split_d) == 10:
+            count += 1
+            mainlist.append(split_d)
+        today = mainlist[x]
+        after = mainlist[x - 1]
+        if today[3][1:3] != after[3][1:3]:
+            day += 1
+        y = day % 8
+        if y == 0:
+            day = 1
+        if day == 1:
+            mon += 1
+        if day == 2:
+            tues += 1
+        if day == 3:
+            wed += 1
+        if day == 4:
+            thurs += 1
+        if day == 5:
+            fri += 1
+        if day == 6:
+            sat += 1
+        if day == 7:
+            sun += 1
+        x = x + 1            
+    
+    monav = mon/52
+    tuesav = tues/52
+    wedav = wed/52
+    thursav = thurs/52
+    friav = fri/52
+    satav = sat/52
+    sunav = sun/52
+    
+    print("Monday had an average of %d requests." %monav)
+    print("Tuesday had and average of %d requests." %tuesav)
+    print("Wednesday had and average of %d requests." %wedav)
+    print("Thursday had an average of %d requests." %thursav)
+    print("Friday had an average of %d requests." %friav)
+    print("Saturday had an average of %d requests." %satav)
+    print("Sunday had an average of %d requests.\n" %sunav)
+    
+    return
 
 def unsuccessful():
-    f = open('main\correct.txt', 'r')
+    f=open('main\correct.txt', 'r')
     count=0
     file = 0
     for line in f:
@@ -196,16 +263,12 @@ def unsuccessful():
             count+=1
         else:
             file+=1
-
     percen= (count/file)*100
-    print(count)
-    print(file)
-    print("3. A total of %.2f%% of requests were unsuccessful." % percen)
+    print("3. A total of %.2f%% of requests were unsuccessful.\n" % percen)
     return
 
-
 def redirect():
-    f = open('main\correct.txt', 'r')
+    f=open('main\correct.txt', 'r')
     count=0
     file=0
     for line in f:
@@ -230,11 +293,18 @@ def redirect():
             count+=1
         else:
             file+=1
-
     percen= (count/file)*100
-    
-    print(count)
-    print(file)
-    print("4. A total of %.2f%% of requests were redirected elsewhere." % percen)
+    print("4. A total of %.2f%% of requests were redirected elsewhere.\n" % percen)
     return
+
+def mostreq():
+    
+    return
+
+def leastreq():
+    
+    return
+
+
+
 main()
