@@ -59,6 +59,7 @@ def main():
     if not os.path.exists(decpath):
         os.makedirs(decpath)    
     
+    unsuccessful()
     
 f = open('accesslog.txt','r')
 def error():
@@ -80,79 +81,120 @@ def month():
     for line in m:
         split_mon = line.split(' ')
         if "Jan" in split_mon[3]:
-            print (split_mon)
             j = open(january, 'a+')
             j.write(" ".join(split_mon))
             j.close()         
         elif "Feb" in split_mon[3]:
-            print (split_mon)
             f = open(february, 'a+')
             f.write(" ".join(split_mon))
             f.close()         
         elif "Mar" in split_mon[3]:
-            print (split_mon)
             mar = open(march, 'a+')
             mar.write(" ".join(split_mon))
             mar.close()         
         elif "Apr" in split_mon[3]:
-            print (split_mon)
             apr = open(april, 'a+')
             apr.write(" ".join(split_mon))
             apr.close()         
         elif "May" in split_mon[3]:
-            print (split_mon)
             m = open(may, 'a+')
             m.write(" ".join(split_mon))
             m.close()         
         elif "Jun" in split_mon[3]:
-            print (split_mon)
             jun = open(june, 'a+')
             jun.write(" ".join(split_mon))
             jun.close()         
         elif "Jul" in split_mon[3]:
-            print (split_mon)
             jul = open(july, 'a+')
             jul.write(" ".join(split_mon))
             jul.close()         
         elif "Aug" in split_mon[3]:
-            print (split_mon)
             a = open(august, 'a+')
             a.write(" ".join(split_mon))
             a.close()         
         elif "Sep" in split_mon[3]:
-            print (split_mon)
             s = open(september, 'a+')
             s.write(" ".join(split_mon))
             s.close()         
         elif "Oct" in split_mon[3]:
-            print (split_mon)
             o = open(october, 'a+')
             o.write(" ".join(split_mon))
             o.close()               
         elif "Nov" in split_mon[3]:
-            print (split_mon)
             n = open(november, 'a+')
             n.write(" ".join(split_mon))
             n.close() 
         elif "Dec" in split_mon[3]:
-            print (split_mon)
             d = open(december, 'a+')
             d.write(" ".join(split_mon))
             d.close() 
         else:
             e = open(errpath, 'a+')
             e.write(" ".join(split_mon))
-            e.close()            
+            e.close()
+    return
 
 
-
-
-
-
-
-
-
+def unsuccessful():
+    f = open('main\correct.txt', 'r')
+    for line in f:
+        split_f = line.split(' ')
+        if '400' in split_f[8]:
+            print(split_f)
+        if '401' in split_f[8]:
+            print(split_f)        
+        if '402' in split_f[8]:
+            print(split_f)        
+        if '403' in split_f[8]:
+            print(split_f)
+        if '404' in split_f[8]:
+            print(split_f)
+        if '405' in split_f[8]:
+            print(split_f)
+        if '406' in split_f[8]:
+            print(split_f)
+        if '407' in split_f[8]:
+            print(split_f)            
+        if '408' in split_f[8]:
+            print(split_f)
+        if '409' in split_f[8]:
+            print(split_f)
+        if '410' in split_f[8]:
+            print(split_f)
+        if '411' in split_f[8]:
+            print(split_f)
+        if '412' in split_f[8]:
+            print(split_f)        
+        if '413' in split_f[8]:
+            print(split_f)        
+        if '414' in split_f[8]:
+            print(split_f)
+        if '415' in split_f[8]:
+            print(split_f)
+        if '416' in split_f[8]:
+            print(split_f)
+        if '417' in split_f[8]:
+            print(split_f)
+        if '418' in split_f[8]:
+            print(split_f)            
+        if '421' in split_f[8]:
+            print(split_f)
+        if '422' in split_f[8]:
+            print(split_f)
+        if '423' in split_f[8]:
+            print(split_f)
+        if '424' in split_f[8]:
+            print(split_f)
+        if '426' in split_f[8]:
+            print(split_f)
+        if '428' in split_f[8]:
+            print(split_f)            
+        if '429' in split_f[8]:
+            print(split_f)
+        if '431' in split_f[8]:
+            print(split_f)
+        if '451' in split_f[8]:
+            print(split_f)
+    return
 
 main()
-error()
-month()
