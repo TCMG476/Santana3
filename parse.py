@@ -6,17 +6,29 @@ mainpath = r'C:\vagrant_getting_started\Main'
 errpath = r'C:\vagrant_getting_started\Errors\errors.txt'
 corrpath = r'C:\vagrant_getting_started\Main\correct.txt'
 janpath = r'C:\vagrant_getting_started\Main\01-January'
+january = r'C:\vagrant_getting_started\Main\01-January\January.txt'
 febpath = r'C:\vagrant_getting_started\Main\02-February'
+february = r'C:\vagrant_getting_started\Main\02-February\February.txt'
 marpath = r'C:\vagrant_getting_started\Main\03-March'
+march = r'C:\vagrant_getting_started\Main\03-March\March.txt'
 aprpath = r'C:\vagrant_getting_started\Main\04-April'
+april = r'C:\vagrant_getting_started\Main\04-April\April.txt'
 maypath = r'C:\vagrant_getting_started\Main\05-May'
+may = r'C:\vagrant_getting_started\Main\05-May\May.txt'
 junpath = r'C:\vagrant_getting_started\Main\06-June'
+june = r'C:\vagrant_getting_started\Main\06-June\June.txt'
 julpath = r'C:\vagrant_getting_started\Main\07-July'
+july = r'C:\vagrant_getting_started\Main\07-July\July.txt'
 augpath = r'C:\vagrant_getting_started\Main\08-August'
+august = r'C:\vagrant_getting_started\Main\08-August\August.txt'
 seppath = r'C:\vagrant_getting_started\Main\09-September'
+september = r'C:\vagrant_getting_started\Main\09-September\September.txt'
 octpath = r'C:\vagrant_getting_started\Main\10-October'
+october = r'C:\vagrant_getting_started\Main\10-October\October.txt'
 novpath = r'C:\vagrant_getting_started\Main\11-November'
+november = r'C:\vagrant_getting_started\Main\11-November\November.txt'
 decpath = r'C:\vagrant_getting_started\Main\12-December'
+december = r'C:\vagrant_getting_started\Main\12-December\December.txt'
 def main():
     if not os.path.exists(newpath):
         os.makedirs(newpath)
@@ -54,7 +66,6 @@ def error():
         line.split(' ')
         split_up = line.split(' ')
         if len(split_up) != 10:
-            print(split_up)
             e = open(errpath, 'a+')
             e.write(" ".join(split_up))
             e.close()
@@ -64,9 +75,74 @@ def error():
             c.close()  
     return
 
-
-
-
+def month():
+    m = open('main\correct.txt', 'r')
+    for line in m:
+        split_mon = line.split(' ')
+        if "Jan" in split_mon[3]:
+            print (split_mon)
+            j = open(january, 'a+')
+            j.write(" ".join(split_mon))
+            j.close()         
+        elif "Feb" in split_mon[3]:
+            print (split_mon)
+            f = open(february, 'a+')
+            f.write(" ".join(split_mon))
+            f.close()         
+        elif "Mar" in split_mon[3]:
+            print (split_mon)
+            mar = open(march, 'a+')
+            mar.write(" ".join(split_mon))
+            mar.close()         
+        elif "Apr" in split_mon[3]:
+            print (split_mon)
+            apr = open(april, 'a+')
+            apr.write(" ".join(split_mon))
+            apr.close()         
+        elif "May" in split_mon[3]:
+            print (split_mon)
+            m = open(may, 'a+')
+            m.write(" ".join(split_mon))
+            m.close()         
+        elif "Jun" in split_mon[3]:
+            print (split_mon)
+            jun = open(june, 'a+')
+            jun.write(" ".join(split_mon))
+            jun.close()         
+        elif "Jul" in split_mon[3]:
+            print (split_mon)
+            jul = open(july, 'a+')
+            jul.write(" ".join(split_mon))
+            jul.close()         
+        elif "Aug" in split_mon[3]:
+            print (split_mon)
+            a = open(august, 'a+')
+            a.write(" ".join(split_mon))
+            a.close()         
+        elif "Sep" in split_mon[3]:
+            print (split_mon)
+            s = open(september, 'a+')
+            s.write(" ".join(split_mon))
+            s.close()         
+        elif "Oct" in split_mon[3]:
+            print (split_mon)
+            o = open(october, 'a+')
+            o.write(" ".join(split_mon))
+            o.close()               
+        elif "Nov" in split_mon[3]:
+            print (split_mon)
+            n = open(november, 'a+')
+            n.write(" ".join(split_mon))
+            n.close() 
+        elif "Dec" in split_mon[3]:
+            print (split_mon)
+            d = open(december, 'a+')
+            d.write(" ".join(split_mon))
+            d.close() 
+        else:
+            e = open(errpath, 'a+')
+            e.write(" ".join(split_mon))
+            e.close()            
 
 
 
@@ -78,3 +154,5 @@ def error():
 
 
 main()
+error()
+month()
