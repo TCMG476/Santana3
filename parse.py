@@ -1,4 +1,3 @@
-import re
 import os
 
 newpath = r'C:\vagrant_getting_started\Errors'
@@ -58,8 +57,6 @@ def main():
         os.makedirs(novpath)
     if not os.path.exists(decpath):
         os.makedirs(decpath)    
-    
-    unsuccessful()
     
 f = open('accesslog.txt','r')
 def error():
@@ -139,97 +136,107 @@ def unsuccessful():
     f = open('main\correct.txt', 'r')
     count=0
     file = 0
+    
     for line in f:
         split_f = line.split(' ')
         if '400' in split_f[8]:
             count+=1
-            file+=1
         if '401' in split_f[8]:
             count+=1
-            file+=1
         if '402' in split_f[8]:
             count+=1
-            file+=1
         if '403' in split_f[8]:
             count+=1
-            file+=1
         if '404' in split_f[8]:
             count+=1
-            file+=1
         if '405' in split_f[8]:
             count+=1
-            file+=1
         if '406' in split_f[8]:
             count+=1
-            file+=1
         if '407' in split_f[8]:
             count+=1
-            file+=1
         if '408' in split_f[8]:
             count+=1
-            file+=1
         if '409' in split_f[8]:
             count+=1
-            file+=1
         if '410' in split_f[8]:
             count+=1
-            file+=1
         if '411' in split_f[8]:
             count+=1
-            file+=1
         if '412' in split_f[8]:
             count+=1
-            file+=1
         if '413' in split_f[8]:
             count+=1
-            file+=1
         if '414' in split_f[8]:
             count+=1
-            file+=1
         if '415' in split_f[8]:
             count+=1
-            file+=1
         if '416' in split_f[8]:
             count+=1
-            file+=1
         if '417' in split_f[8]:
             count+=1
-            file+=1
         if '418' in split_f[8]:
             count+=1
-            file+=1
         if '421' in split_f[8]:
             count+=1
-            file+=1
         if '422' in split_f[8]:
             count+=1
-            file+=1
         if '423' in split_f[8]:
             count+=1
-            file+=1
         if '424' in split_f[8]:
             count+=1
-            file+=1
         if '426' in split_f[8]:
             count+=1
-            file+=1
         if '428' in split_f[8]:
             count+=1 
-            file+=1
         if '429' in split_f[8]:
             count+=1
-            file+=1
         if '431' in split_f[8]:
             count+=1
-            file+=1
         if '451' in split_f[8]:
             count+=1
-            file+=1
         else:
             file+=1
+
+    percen= (count/file)*100
     print(count)
     print(file)
-    print((count/file)*100)
+    print("3. A total of %.2f%% of requests were unsuccessful." % percen)
     return
 
+
+def redirect():
+    f = open('main\correct.txt', 'r')
+    count=0
+    file = 0
+    
+    for line in f:
+        split_f = line.split(' ')
+        if '300' in split_f[8]:
+            count+=1
+        if '301' in split_f[8]:
+            count+=1
+        if '302' in split_f[8]:
+            count+=1
+        if '303' in split_f[8]:
+            count+=1
+        if '304' in split_f[8]:
+            count+=1
+        if '305' in split_f[8]:
+            count+=1
+        if '306' in split_f[8]:
+            count+=1
+        if '307' in split_f[8]:
+            count+=1
+        if '308' in split_f[8]:
+            count+=1
+        else:
+            file+=1
+
+    percen= (count/file)*100
+    
+    print(count)
+    print(file)
+    print("4. A total of %.2f%% of requests were redirected elsewhere." % percen)
+    return
 main()
