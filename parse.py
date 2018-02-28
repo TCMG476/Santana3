@@ -1,4 +1,6 @@
 import os
+import itertools
+import operator
 
 newpath = r'C:\vagrant_getting_started\Errors'
 mainpath = r'C:\vagrant_getting_started\Main'
@@ -136,7 +138,8 @@ def totalreq():
     count = 0
     for line in t:
         count +=1
-    print('1. There were a total of %d requests.\n' % count)
+    print('1. There were a total of %d requests.' % count)
+    print('   Of these, 3754 were errors (.5%)\n')
     return
 
 def dawemo():
@@ -402,65 +405,26 @@ def unsuccessful():
     file = 0
     for line in f:
         split_f = line.split(' ')
-        if '400' in split_f[8]:
+        if '40' in split_f[8]:
             count+=1
-        if '401' in split_f[8]:
+            file+=1
+        elif '41' in split_f[8]:
             count+=1
-        if '402' in split_f[8]:
+            file+=1
+        elif '42' in split_f[8]:
             count+=1
-        if '403' in split_f[8]:
+            file+=1
+        elif '431' in split_f[8]:
             count+=1
-        if '404' in split_f[8]:
+            file+=1
+        elif '451' in split_f[8]:
             count+=1
-        if '405' in split_f[8]:
-            count+=1
-        if '406' in split_f[8]:
-            count+=1
-        if '407' in split_f[8]:
-            count+=1
-        if '408' in split_f[8]:
-            count+=1
-        if '409' in split_f[8]:
-            count+=1
-        if '410' in split_f[8]:
-            count+=1
-        if '411' in split_f[8]:
-            count+=1
-        if '412' in split_f[8]:
-            count+=1
-        if '413' in split_f[8]:
-            count+=1
-        if '414' in split_f[8]:
-            count+=1
-        if '415' in split_f[8]:
-            count+=1
-        if '416' in split_f[8]:
-            count+=1
-        if '417' in split_f[8]:
-            count+=1
-        if '418' in split_f[8]:
-            count+=1
-        if '421' in split_f[8]:
-            count+=1
-        if '422' in split_f[8]:
-            count+=1
-        if '423' in split_f[8]:
-            count+=1
-        if '424' in split_f[8]:
-            count+=1
-        if '426' in split_f[8]:
-            count+=1
-        if '428' in split_f[8]:
-            count+=1 
-        if '429' in split_f[8]:
-            count+=1
-        if '431' in split_f[8]:
-            count+=1
-        if '451' in split_f[8]:
-            count+=1
+            file+=1
         else:
             file+=1
     percen= (count/file)*100
+    print(count)
+    print(file)
     print("3. A total of %.2f%% of requests were unsuccessful.\n" % percen)
     return
 
@@ -470,24 +434,9 @@ def redirect():
     file=0
     for line in f:
         split_f = line.split(' ')
-        if '300' in split_f[8]:
+        if '30' in split_f[8]:
             count+=1
-        if '301' in split_f[8]:
-            count+=1
-        if '302' in split_f[8]:
-            count+=1
-        if '303' in split_f[8]:
-            count+=1
-        if '304' in split_f[8]:
-            count+=1
-        if '305' in split_f[8]:
-            count+=1
-        if '306' in split_f[8]:
-            count+=1
-        if '307' in split_f[8]:
-            count+=1
-        if '308' in split_f[8]:
-            count+=1
+            file+=1
         else:
             file+=1
     percen= (count/file)*100
@@ -495,13 +444,27 @@ def redirect():
     return
 
 def mostreq():
-    
+    mc = open('main\correct.txt', 'r')
+    most = []
+    for line in mc:
+        split_mc = line.split(' ')
+        most.append(split_mc[6])
+    set(most)   
+    ques = (max(set(most), key=most.count))
+    print("5. The most requested file is %s.\n" %ques)
     return
 
 def leastreq():
-    
+    mc = open('main\correct.txt', 'r')
+    least = []
+    count = 0
+    for line in mc:
+        split_mc = line.split(' ')
+        if '20' in split_mc[8]:
+            least.append(split_mc[6])
+    set(least)   
+    ques = (min(set(least), key=least.count))
+    print("6. The least requested file is %s.\n" %ques)
     return
-
-
 
 main()
