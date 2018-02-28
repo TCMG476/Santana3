@@ -199,6 +199,138 @@ def dawemo():
     
     return
 
+def weekav():
+    w=open('main\correct.txt', 'r')
+    count = 0
+    wone = []
+    wtwo = []
+    wthree = []
+    wfour = []
+    lastfew = []
+    twentynine = []
+    thirtieth = []
+    thirtyone = []
+    for line in w:
+        split_w = line.split(' ')
+        if '01' in split_w[3][1:3]:
+            count += 1
+            wone.append(split_w)
+        elif '02' in split_w[3][1:3]:
+            count += 1
+            wone.append(split_w)
+        elif '03' in split_w[3][1:3]:
+            count += 1
+            wone.append(split_w)
+        elif '04' in split_w[3][1:3]:
+            count += 1
+            wone.append(split_w)
+        elif '05' in split_w[3][1:3]:
+            count += 1
+            wone.append(split_w)
+        elif '06' in split_w[3][1:3]:
+            count += 1
+            wone.append(split_w)
+        elif '07' in split_w[3][1:3]:
+            count += 1
+            wone.append(split_w)
+        elif '08' in split_w[3][1:3]:
+            count += 1
+            wtwo.append(split_w)
+        elif '09' in split_w[3][1:3]:
+            count += 1
+            wtwo.append(split_w)
+        elif '10' in split_w[3][1:3]:
+            count += 1
+            wtwo.append(split_w)
+        elif '11' in split_w[3][1:3]:
+            count += 1
+            wtwo.append(split_w)
+        elif '12' in split_w[3][1:3]:
+            count += 1
+            wtwo.append(split_w)
+        elif '13' in split_w[3][1:3]:
+            count += 1
+            wtwo.append(split_w)
+        elif '14' in split_w[3][1:3]:
+            count += 1
+            wtwo.append(split_w)
+        elif '15' in split_w[3][1:3]:
+            count += 1
+            wthree.append(split_w)
+        elif '16' in split_w[3][1:3]:
+            count += 1
+            wthree.append(split_w)
+        elif '17' in split_w[3][1:3]:
+            count += 1
+            wthree.append(split_w)
+        elif '18' in split_w[3][1:3]:
+            count += 1
+            wthree.append(split_w)
+        elif '19' in split_w[3][1:3]:
+            count += 1
+            wthree.append(split_w)
+        elif '20' in split_w[3][1:3]:
+            count += 1
+            wthree.append(split_w)
+        elif '21' in split_w[3][1:3]:
+            count += 1
+            wthree.append(split_w)
+        elif '22' in split_w[3][1:3]:
+            count += 1
+            wfour.append(split_w)
+        elif '23' in split_w[3][1:3]:
+            count += 1
+            wfour.append(split_w)
+        elif '24' in split_w[3][1:3]:
+            count += 1
+            wfour.append(split_w)
+        elif '25' in split_w[3][1:3]:
+            count += 1
+            wfour.append(split_w)
+        elif '26' in split_w[3][1:3]:
+            count += 1
+            wfour.append(split_w)
+        elif '27' in split_w[3][1:3]:
+            count += 1
+            wfour.append(split_w)
+        elif '28' in split_w[3][1:3]:
+            count += 1
+            wfour.append(split_w)
+        elif '29' in split_w[3][1:3]:
+            count += 1
+            lastfew.append(split_w)
+            twentynine.append(split_w)
+        elif '30' in split_w[3][1:3]:
+            count += 1
+            lastfew.append(split_w)
+            thirtieth.append(split_w)
+        elif '31' in split_w[3][1:3]:
+            count += 1
+            lastfew.append(split_w)
+            thirtyone.append(split_w)
+    
+    one = len(wone)/12
+    two = len(wtwo)/12
+    three = len(wthree)/12
+    four = len(wfour)/12
+    last = len(lastfew)/11
+    tn = len(twentynine)/11
+    tt = len(thirtieth)/11
+    to = len(thirtyone)/7
+    
+    print("The 1st week of every month had an average of %d requests." %one)
+    print("The 2nd week of every month had an average of %d requests." %two)
+    print("The 3rd week of every month had an average of %d requests." %three)
+    print("The 4th week of every month had an average of %d requests.\n" %four)
+    print("The last couple of days of every month had an average of %d "\
+          "requests, \ndenoting heavier traffic. The following breaks"\
+          " down the last few days \nof the month (for the months that have"\
+          " them):\n" %last)
+    print("The 29th day had an average of %d requests." %tn)
+    print("The 30th day had an average of %d requests." %tt)
+    print("The 31st day had an average of %d requests.\n" %to)
+
+
 def unsuccessful():
     f=open('main\correct.txt', 'r')
     count=0
