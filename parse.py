@@ -330,6 +330,71 @@ def weekav():
     print("The 30th day had an average of %d requests." %tt)
     print("The 31st day had an average of %d requests.\n" %to)
 
+def monthnum():
+    j = open(january, 'r')
+    f = open(february, 'r')
+    mar = open(march, 'r')
+    a = open(april, 'r')
+    ma = open(may, 'r')
+    jun = open(june, 'r')
+    jul = open(july, 'r')
+    aug = open(august, 'r')
+    sep = open(september, 'r')
+    o = open(october, 'r')
+    n = open(november, 'r')
+    d = open(december, 'r')
+    
+    jcount = 0
+    fcount = 0 
+    marcount = 0 
+    acount = 0 
+    macount = 0 
+    juncount = 0 
+    julcount = 0 
+    augcount = 0 
+    sepcount = 0 
+    ocount = 0 
+    ncount = 0
+    dcount = 0 
+    for line in j:
+        jcount+=1
+    for line in f:
+        fcount+=1
+    for line in mar:
+        marcount+=1
+    for line in a:
+        acount+=1
+    for line in ma:
+        macount+=1
+    for line in jun:
+        juncount+=1
+    for line in jul:
+        julcount+=1
+    for line in aug:
+        augcount+=1
+    for line in sep:
+        sepcount+=1
+    for line in o:
+        ocount+=1
+    for line in n:
+        ncount+=1
+    for line in d:
+        dcount+=1
+        
+    print("January had a total of %d requests." %jcount)
+    print("February had a total of %d requests." %fcount)
+    print("March had a total of %d requests." %marcount)
+    print("April had a total of %d requests." %acount)
+    print("May had a total of %d requests." %macount)
+    print("June had a total of %d requests." %juncount)
+    print("July had a total of %d requests." %julcount)
+    print("August had a total of %d requests." %augcount)
+    print("September had a total of %d requests." %sepcount)
+    print("October had a total of %d requests." %ocount)
+    print("November had a total of %d requests." %ncount)
+    print("December had a total of %d requests.\n" %dcount)
+    
+    return
 
 def unsuccessful():
     f=open('main\correct.txt', 'r')
