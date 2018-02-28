@@ -58,7 +58,17 @@ def main():
     if not os.path.exists(novpath):
         os.makedirs(novpath)
     if not os.path.exists(decpath):
-        os.makedirs(decpath)    
+        os.makedirs(decpath)
+    error()
+    month()
+    totalreq()
+    dawemo()
+    weekav()
+    monthnum()
+    unsuccessful()
+    redirect()
+    mostreq()
+    leastreq()    
     
 def error():
     f = open('accesslog.txt','r')
@@ -192,14 +202,13 @@ def dawemo():
     satav = sat/52
     sunav = sun/52
     
-    print("Monday had an average of %d requests." %monav)
-    print("Tuesday had and average of %d requests." %tuesav)
-    print("Wednesday had and average of %d requests." %wedav)
-    print("Thursday had an average of %d requests." %thursav)
-    print("Friday had an average of %d requests." %friav)
-    print("Saturday had an average of %d requests." %satav)
-    print("Sunday had an average of %d requests.\n" %sunav)
-    
+    print("2. Monday had an average of %d requests." %monav)
+    print("   Tuesday had and average of %d requests." %tuesav)
+    print("   Wednesday had and average of %d requests." %wedav)
+    print("   Thursday had an average of %d requests." %thursav)
+    print("   Friday had an average of %d requests." %friav)
+    print("   Saturday had an average of %d requests." %satav)
+    print("   Sunday had an average of %d requests.\n" %sunav)
     return
 
 def weekav():
@@ -321,17 +330,17 @@ def weekav():
     tt = len(thirtieth)/11
     to = len(thirtyone)/7
     
-    print("The 1st week of every month had an average of %d requests." %one)
-    print("The 2nd week of every month had an average of %d requests." %two)
-    print("The 3rd week of every month had an average of %d requests." %three)
-    print("The 4th week of every month had an average of %d requests.\n" %four)
-    print("The last couple of days of every month had an average of %d "\
-          "requests, \ndenoting heavier traffic. The following breaks"\
-          " down the last few days \nof the month (for the months that have"\
+    print("   The 1st week of every month had an average of %d requests." %one)
+    print("   The 2nd week of every month had an average of %d requests." %two)
+    print("   The 3rd week of every month had an average of %d requests." %three)
+    print("   The 4th week of every month had an average of %d requests.\n" %four)
+    print("   The last couple of days of every month had an average of %d "\
+          "requests, \n   denoting heavier traffic. The following breaks"\
+          " down the last few days \n   of the month (for the months that have"\
           " them):\n" %last)
-    print("The 29th day had an average of %d requests." %tn)
-    print("The 30th day had an average of %d requests." %tt)
-    print("The 31st day had an average of %d requests.\n" %to)
+    print("   The 29th day had an average of %d requests." %tn)
+    print("   The 30th day had an average of %d requests." %tt)
+    print("   The 31st day had an average of %d requests.\n" %to)
 
 def monthnum():
     j = open(january, 'r')
@@ -384,18 +393,18 @@ def monthnum():
     for line in d:
         dcount+=1
         
-    print("January had a total of %d requests." %jcount)
-    print("February had a total of %d requests." %fcount)
-    print("March had a total of %d requests." %marcount)
-    print("April had a total of %d requests." %acount)
-    print("May had a total of %d requests." %macount)
-    print("June had a total of %d requests." %juncount)
-    print("July had a total of %d requests." %julcount)
-    print("August had a total of %d requests." %augcount)
-    print("September had a total of %d requests." %sepcount)
-    print("October had a total of %d requests." %ocount)
-    print("November had a total of %d requests." %ncount)
-    print("December had a total of %d requests.\n" %dcount)
+    print("   January had a total of %d requests." %jcount)
+    print("   February had a total of %d requests." %fcount)
+    print("   March had a total of %d requests." %marcount)
+    print("   April had a total of %d requests." %acount)
+    print("   May had a total of %d requests." %macount)
+    print("   June had a total of %d requests." %juncount)
+    print("   July had a total of %d requests." %julcount)
+    print("   August had a total of %d requests." %augcount)
+    print("   September had a total of %d requests." %sepcount)
+    print("   October had a total of %d requests." %ocount)
+    print("   November had a total of %d requests." %ncount)
+    print("   December had a total of %d requests.\n" %dcount)
     
     return
 
@@ -423,8 +432,6 @@ def unsuccessful():
         else:
             file+=1
     percen= (count/file)*100
-    print(count)
-    print(file)
     print("3. A total of %.2f%% of requests were unsuccessful.\n" % percen)
     return
 
@@ -464,7 +471,7 @@ def leastreq():
             least.append(split_mc[6])
     set(least)   
     ques = (min(set(least), key=least.count))
-    print("6. The least requested file is %s.\n" %ques)
+    print("6. The least requested file is %s." %ques)
     return
 
 main()
