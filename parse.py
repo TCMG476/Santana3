@@ -1,6 +1,7 @@
 import os
 import platform
 import urllib.request
+import operator
 if platform.system() == 'Windows':
     errpath = r'C:\vagrant_getting_started\errors.txt'
     corrpath = r'C:\vagrant_getting_started\correct.txt'
@@ -87,16 +88,7 @@ def main():
         os.makedirs(novpath)
     if not os.path.exists(decpath):
         os.makedirs(decpath)
-    writefile(data)
-    error()
-    month()
-    totalreq()
-    dawemo()
-    weekav()
-    monthnum()
-    unsuccessful()
-    redirect()
-    mostreq()
+    
     return data
 
 def writefile(lines):
@@ -483,28 +475,27 @@ def redirect():
     print("4. A total of %.2f%% of requests were redirected elsewhere.\n" % percen)
     return
 
-def mostreq():
-    mc = open(corrpath, 'r')
-    most = []
-    for line in mc:
-        split_mc = line.split(' ')
-        most.append(split_mc[6])
-    set(most)   
-    ques = (max(set(most), key=most.count))
-    print("5. The most requested file is %s.\n" %ques)
-    return
+def numreqs():
+    lc = open(corrpath, 'r')
+    sdict = {}
+    searchlist = []
+    for line in lc:
+        split_lc = line.split(' ')
+        if split_lc[6] not in searchlist and split_lc[6] not in sdict:
+            searchlist.append(split_lc[6])
+        elif split_lc[6] in searchlist and split_lc[6] not in sdict:
+            sdict[split_lc[6]] = 2
+            searchlist.remove(split_lc[6])
+        elif split_lc[6] not in searchlist and split_lc[6] in sdict:
+            sdict[split_lc[6]] += 1
+    maximum = max(sdict.items(), key=operator.itemgetter(1))[0]
+    print ("5. The most requested file is", maximum, "which has been requested",\
+           sdict[maximum], "times. \n") 
+    print ("6. Number of files that were only requested once:\n   ", \
+           len(searchlist), "\n   Examples of files with only one request:\n   ", \
+           searchlist[11]+ ",", searchlist[524]+ ", and", searchlist[672]+'.')
+       
 
-def leastreq():
-    mc = open(corrpath, 'r')
-    least = []
-    count = 0
-    for line in mc:
-        split_mc = line.split(' ')
-        if '20' in split_mc[8]:
-            least.append(split_mc[6])
-    set(least)   
-    ques = (min(set(least), key=least.count))
-    print("6. The least requested file is %s." %ques)
     return
 
 main()
