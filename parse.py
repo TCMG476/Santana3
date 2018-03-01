@@ -1,40 +1,68 @@
 import os
-import itertools
-import operator
-
-newpath = r'C:\vagrant_getting_started\Errors'
-mainpath = r'C:\vagrant_getting_started\Main'
-errpath = r'C:\vagrant_getting_started\Errors\errors.txt'
-corrpath = r'C:\vagrant_getting_started\Main\correct.txt'
-janpath = r'C:\vagrant_getting_started\Main\01-January'
-january = r'C:\vagrant_getting_started\Main\01-January\January.txt'
-febpath = r'C:\vagrant_getting_started\Main\02-February'
-february = r'C:\vagrant_getting_started\Main\02-February\February.txt'
-marpath = r'C:\vagrant_getting_started\Main\03-March'
-march = r'C:\vagrant_getting_started\Main\03-March\March.txt'
-aprpath = r'C:\vagrant_getting_started\Main\04-April'
-april = r'C:\vagrant_getting_started\Main\04-April\April.txt'
-maypath = r'C:\vagrant_getting_started\Main\05-May'
-may = r'C:\vagrant_getting_started\Main\05-May\May.txt'
-junpath = r'C:\vagrant_getting_started\Main\06-June'
-june = r'C:\vagrant_getting_started\Main\06-June\June.txt'
-julpath = r'C:\vagrant_getting_started\Main\07-July'
-july = r'C:\vagrant_getting_started\Main\07-July\July.txt'
-augpath = r'C:\vagrant_getting_started\Main\08-August'
-august = r'C:\vagrant_getting_started\Main\08-August\August.txt'
-seppath = r'C:\vagrant_getting_started\Main\09-September'
-september = r'C:\vagrant_getting_started\Main\09-September\September.txt'
-octpath = r'C:\vagrant_getting_started\Main\10-October'
-october = r'C:\vagrant_getting_started\Main\10-October\October.txt'
-novpath = r'C:\vagrant_getting_started\Main\11-November'
-november = r'C:\vagrant_getting_started\Main\11-November\November.txt'
-decpath = r'C:\vagrant_getting_started\Main\12-December'
-december = r'C:\vagrant_getting_started\Main\12-December\December.txt'
+import platform
+import urllib.request
+if platform.system() == 'Windows':
+    errpath = r'C:\vagrant_getting_started\errors.txt'
+    corrpath = r'C:\vagrant_getting_started\correct.txt'
+    janpath = r'C:\vagrant_getting_started\01-January'
+    january = r'C:\vagrant_getting_started\01-January\January.txt'
+    febpath = r'C:\vagrant_getting_started\02-February'
+    february = r'C:\vagrant_getting_started\02-February\February.txt'
+    marpath = r'C:\vagrant_getting_started\03-March'
+    march = r'C:\vagrant_getting_started\03-March\March.txt'
+    aprpath = r'C:\vagrant_getting_started\04-April'
+    april = r'C:\vagrant_getting_started\04-April\April.txt'
+    maypath = r'C:\vagrant_getting_started\05-May'
+    may = r'C:\vagrant_getting_started\05-May\May.txt'
+    junpath = r'C:\vagrant_getting_started\06-June'
+    june = r'C:\vagrant_getting_started\06-June\June.txt'
+    julpath = r'C:\vagrant_getting_started\07-July'
+    july = r'C:\vagrant_getting_started\07-July\July.txt'
+    augpath = r'C:\vagrant_getting_started\08-August'
+    august = r'C:\vagrant_getting_started\08-August\August.txt'
+    seppath = r'C:\vagrant_getting_started\09-September'
+    september = r'C:\vagrant_getting_started\09-September\September.txt'
+    octpath = r'C:\vagrant_getting_started\10-October'
+    october = r'C:\vagrant_getting_started\10-October\October.txt'
+    novpath = r'C:\vagrant_getting_started\11-November'
+    november = r'C:\vagrant_getting_started\11-November\November.txt'
+    decpath = r'C:\vagrant_getting_started\12-December'
+    december = r'C:\vagrant_getting_started\12-December\December.txt'
+else:
+    errpath = r'errors.txt'
+    corrpath = r'correct.txt'
+    janpath = r'01-January'
+    january = r'01-January/January.txt'
+    febpath = r'02-February'
+    february = r'02-February/February.txt'
+    marpath = r'03-March'
+    march = r'03-March/March.txt'
+    aprpath = r'04-April'
+    april = r'04-April/April.txt'
+    maypath = r'05-May'
+    may = r'05-May/May.txt'
+    junpath = r'06-June'
+    june = r'06-June/June.txt'
+    julpath = r'07-July'
+    july = r'07-July/July.txt'
+    augpath = r'08-August'
+    august = r'08-August/August.txt'
+    seppath = r'09-September'
+    september = r'09-September/September.txt'
+    octpath = r'10-October'
+    october = r'10-October/October.txt'
+    novpath = r'11-November'
+    november = r'11-November/November.txt'
+    decpath = r'12-December'
+    december = r'12-December/December.txt'    
+    
 def main():
-    if not os.path.exists(newpath):
-        os.makedirs(newpath)
-    if not os.path.exists(mainpath):
-        os.makedirs(mainpath)
+    print ("Connecting with https://s3.amazonaws.com/tcmg476/http_access_log...")
+    webUrl = urllib.request.urlopen("https://s3.amazonaws.com/tcmg476/http_access_log")
+    print ("Success! Please be patient, your files are being generated\n")  
+    global data
+    data = webUrl.read()
+    
     if not os.path.exists(janpath):
         os.makedirs(janpath)
     if not os.path.exists(febpath):
@@ -59,6 +87,7 @@ def main():
         os.makedirs(novpath)
     if not os.path.exists(decpath):
         os.makedirs(decpath)
+    writefile(data)
     error()
     month()
     totalreq()
@@ -68,7 +97,12 @@ def main():
     unsuccessful()
     redirect()
     mostreq()
-    leastreq()    
+    return data
+
+def writefile(lines):
+    a = open('accesslog.txt', 'w+')
+    a.write(lines.decode("UTF-8"))
+    a.close()
     
 def error():
     f = open('accesslog.txt','r')
@@ -86,7 +120,7 @@ def error():
     return
 
 def month():
-    m=open('main\correct.txt', 'r')
+    m=open(corrpath, 'r')
     for line in m:
         split_mon = line.split(' ')
         if "Jan" in split_mon[3]:
@@ -148,12 +182,11 @@ def totalreq():
     count = 0
     for line in t:
         count +=1
-    print('1. There were a total of %d requests.' % count)
-    print('   Of these, 3754 were errors (.5%)\n')
+    print('1. There were a total of %d requests.\n' % count)
     return
 
 def dawemo():
-    d=open('main\correct.txt', 'r')
+    d=open(corrpath, 'r')
     count = 0
     mainlist = []
     day = 0
@@ -212,7 +245,7 @@ def dawemo():
     return
 
 def weekav():
-    w=open('main\correct.txt', 'r')
+    w=open(corrpath, 'r')
     count = 0
     wone = []
     wtwo = []
@@ -409,7 +442,7 @@ def monthnum():
     return
 
 def unsuccessful():
-    f=open('main\correct.txt', 'r')
+    f=open(corrpath, 'r')
     count=0
     file = 0
     for line in f:
@@ -436,7 +469,7 @@ def unsuccessful():
     return
 
 def redirect():
-    f=open('main\correct.txt', 'r')
+    f=open(corrpath, 'r')
     count=0
     file=0
     for line in f:
@@ -451,7 +484,7 @@ def redirect():
     return
 
 def mostreq():
-    mc = open('main\correct.txt', 'r')
+    mc = open(corrpath, 'r')
     most = []
     for line in mc:
         split_mc = line.split(' ')
@@ -462,7 +495,7 @@ def mostreq():
     return
 
 def leastreq():
-    mc = open('main\correct.txt', 'r')
+    mc = open(corrpath, 'r')
     least = []
     count = 0
     for line in mc:
