@@ -60,10 +60,9 @@ else:
 def main():
     print ("Connecting with https://s3.amazonaws.com/tcmg476/http_access_log...")
     webUrl = urllib.request.urlopen("https://s3.amazonaws.com/tcmg476/http_access_log")
-    print ("Success! Please be patient, your files are being generated\n")  
+    print ("Success! Please be patient, your files are being generated.\n")  
     global data
     data = webUrl.read()
-    
     if not os.path.exists(janpath):
         os.makedirs(janpath)
     if not os.path.exists(febpath):
@@ -88,13 +87,24 @@ def main():
         os.makedirs(novpath)
     if not os.path.exists(decpath):
         os.makedirs(decpath)
-    
+    writefile(data)
+    error()
+    month()
+    totalreq()
+    dawemo()
+    weekav()
+    monthnum()
+    unsuccessful()
+    redirect()
+    numreqs()
     return data
 
 def writefile(lines):
+    print("Writing http_access_log to local file...")
     a = open('accesslog.txt', 'w+')
     a.write(lines.decode("UTF-8"))
     a.close()
+    print("Done.\nSeparating errors...")
     
 def error():
     f = open('accesslog.txt','r')
@@ -108,7 +118,8 @@ def error():
         else:
             c = open(corrpath, 'a+')
             c.write(" ".join(split_up))
-            c.close()  
+            c.close()
+    print("Done.\nSeparating month logs into respective files...")
     return
 
 def month():
@@ -167,6 +178,8 @@ def month():
             e = open(errpath, 'a+')
             e.write(" ".join(split_mon))
             e.close()
+    print("Done.\nProcessing requests... NOTE: Questions 5 and 6 take "\
+          "longer, please be patient.")
     return
 
 def totalreq():
@@ -218,7 +231,6 @@ def dawemo():
         if day == 7:
             sun += 1
         x = x + 1            
-    
     monav = mon/52
     tuesav = tues/52
     wedav = wed/52
@@ -226,7 +238,6 @@ def dawemo():
     friav = fri/52
     satav = sat/52
     sunav = sun/52
-    
     print("2. Monday had an average of %d requests." %monav)
     print("   Tuesday had and average of %d requests." %tuesav)
     print("   Wednesday had and average of %d requests." %wedav)
@@ -345,7 +356,6 @@ def weekav():
             count += 1
             lastfew.append(split_w)
             thirtyone.append(split_w)
-    
     one = len(wone)/12
     two = len(wtwo)/12
     three = len(wthree)/12
@@ -354,7 +364,6 @@ def weekav():
     tn = len(twentynine)/11
     tt = len(thirtieth)/11
     to = len(thirtyone)/7
-    
     print("   The 1st week of every month had an average of %d requests." %one)
     print("   The 2nd week of every month had an average of %d requests." %two)
     print("   The 3rd week of every month had an average of %d requests." %three)
@@ -380,7 +389,6 @@ def monthnum():
     o = open(october, 'r')
     n = open(november, 'r')
     d = open(december, 'r')
-    
     jcount = 0
     fcount = 0 
     marcount = 0 
@@ -416,8 +424,7 @@ def monthnum():
     for line in n:
         ncount+=1
     for line in d:
-        dcount+=1
-        
+        dcount+=1   
     print("   January had a total of %d requests." %jcount)
     print("   February had a total of %d requests." %fcount)
     print("   March had a total of %d requests." %marcount)
@@ -430,7 +437,6 @@ def monthnum():
     print("   October had a total of %d requests." %ocount)
     print("   November had a total of %d requests." %ncount)
     print("   December had a total of %d requests.\n" %dcount)
-    
     return
 
 def unsuccessful():
@@ -494,8 +500,6 @@ def numreqs():
     print ("6. Number of files that were only requested once:\n   ", \
            len(searchlist), "\n   Examples of files with only one request:\n   ", \
            searchlist[11]+ ",", searchlist[524]+ ", and", searchlist[672]+'.')
-       
-
     return
 
 main()
