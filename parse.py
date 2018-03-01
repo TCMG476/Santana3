@@ -5,57 +5,33 @@ import operator
 if platform.system() == 'Windows':
     errpath = r'C:\vagrant_getting_started\errors.txt'
     corrpath = r'C:\vagrant_getting_started\correct.txt'
-    janpath = r'C:\vagrant_getting_started\01-January'
-    january = r'C:\vagrant_getting_started\01-January\January.txt'
-    febpath = r'C:\vagrant_getting_started\02-February'
-    february = r'C:\vagrant_getting_started\02-February\February.txt'
-    marpath = r'C:\vagrant_getting_started\03-March'
-    march = r'C:\vagrant_getting_started\03-March\March.txt'
-    aprpath = r'C:\vagrant_getting_started\04-April'
-    april = r'C:\vagrant_getting_started\04-April\April.txt'
-    maypath = r'C:\vagrant_getting_started\05-May'
-    may = r'C:\vagrant_getting_started\05-May\May.txt'
-    junpath = r'C:\vagrant_getting_started\06-June'
-    june = r'C:\vagrant_getting_started\06-June\June.txt'
-    julpath = r'C:\vagrant_getting_started\07-July'
-    july = r'C:\vagrant_getting_started\07-July\July.txt'
-    augpath = r'C:\vagrant_getting_started\08-August'
-    august = r'C:\vagrant_getting_started\08-August\August.txt'
-    seppath = r'C:\vagrant_getting_started\09-September'
-    september = r'C:\vagrant_getting_started\09-September\September.txt'
-    octpath = r'C:\vagrant_getting_started\10-October'
-    october = r'C:\vagrant_getting_started\10-October\October.txt'
-    novpath = r'C:\vagrant_getting_started\11-November'
-    november = r'C:\vagrant_getting_started\11-November\November.txt'
-    decpath = r'C:\vagrant_getting_started\12-December'
-    december = r'C:\vagrant_getting_started\12-December\December.txt'
+    january = r'C:\vagrant_getting_started\01-January.txt'
+    february = r'C:\vagrant_getting_started\02-February.txt'
+    march = r'C:\vagrant_getting_started\03-March.txt'
+    april = r'C:\vagrant_getting_started\04-April.txt'
+    may = r'C:\vagrant_getting_started\05-May.txt'
+    june = r'C:\vagrant_getting_started\06-June.txt'
+    july = r'C:\vagrant_getting_started\07-July.txt'
+    august = r'C:\vagrant_getting_started\08-August.txt'
+    september = r'C:\vagrant_getting_started\09-September.txt'
+    october = r'C:\vagrant_getting_started\10-October.txt'
+    november = r'C:\vagrant_getting_started\11-November.txt'
+    december = r'C:\vagrant_getting_started\12-December.txt'
 else:
     errpath = r'errors.txt'
     corrpath = r'correct.txt'
-    janpath = r'01-January'
-    january = r'01-January/January.txt'
-    febpath = r'02-February'
-    february = r'02-February/February.txt'
-    marpath = r'03-March'
-    march = r'03-March/March.txt'
-    aprpath = r'04-April'
-    april = r'04-April/April.txt'
-    maypath = r'05-May'
-    may = r'05-May/May.txt'
-    junpath = r'06-June'
-    june = r'06-June/June.txt'
-    julpath = r'07-July'
-    july = r'07-July/July.txt'
-    augpath = r'08-August'
-    august = r'08-August/August.txt'
-    seppath = r'09-September'
-    september = r'09-September/September.txt'
-    octpath = r'10-October'
-    october = r'10-October/October.txt'
-    novpath = r'11-November'
-    november = r'11-November/November.txt'
-    decpath = r'12-December'
-    december = r'12-December/December.txt'    
+    january = r'01-January.txt'
+    february = r'02-February.txt'
+    march = r'03-March.txt'
+    april = r'04-April.txt'
+    may = r'05-May.txt'
+    june = r'06-June.txt'
+    july = r'07-July.txt'
+    august = r'08-August.txt'
+    september = r'09-September.txt'
+    october = r'10-October.txt'
+    november = r'11-November.txt'
+    december = r'12-December.txt'    
     
 def main():
     print ("Connecting with https://s3.amazonaws.com/tcmg476/http_access_log...")
@@ -63,30 +39,6 @@ def main():
     print ("Success! Please be patient, your files are being generated.\n")  
     global data
     data = webUrl.read()
-    if not os.path.exists(janpath):
-        os.makedirs(janpath)
-    if not os.path.exists(febpath):
-        os.makedirs(febpath)
-    if not os.path.exists(marpath):
-        os.makedirs(marpath)
-    if not os.path.exists(aprpath):
-        os.makedirs(aprpath)
-    if not os.path.exists(maypath):
-        os.makedirs(maypath)
-    if not os.path.exists(junpath):
-        os.makedirs(junpath)
-    if not os.path.exists(julpath):
-        os.makedirs(julpath)
-    if not os.path.exists(augpath):
-        os.makedirs(augpath)
-    if not os.path.exists(seppath):
-        os.makedirs(seppath)
-    if not os.path.exists(octpath):
-        os.makedirs(octpath)
-    if not os.path.exists(novpath):
-        os.makedirs(novpath)
-    if not os.path.exists(decpath):
-        os.makedirs(decpath)
     writefile(data)
     error()
     month()
