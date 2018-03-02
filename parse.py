@@ -2,7 +2,8 @@ import os
 import platform
 import urllib.request
 import operator
-
+corrlist = []
+errlist = []
 if platform.system() == 'Windows':
     errpath = r'C:\vagrant_getting_started\errors.txt'
     corrpath = r'C:\vagrant_getting_started\correct.txt'
@@ -64,13 +65,15 @@ def error():
         line.split(' ')
         split_up = line.split(' ')
         if len(split_up) != 10:
-            e = open(errpath, 'a+')
-            e.write(" ".join(split_up))
-            e.close()
+            errlist.append(split_up)
         else:
-            c = open(corrpath, 'a+')
-            c.write(" ".join(split_up))
-            c.close()
+            corrlist.append(split_up)
+    j= open(corrpath, 'w+')
+    j.write(''.join(" ".join(x) for x in corrlist))
+    j.close()
+    e = open(errpath, 'w+')
+    e.write(''.join(" ".join(x) for x in errlist))
+    e.close()    
     print("Done.\nSeparating month logs into respective files...")
     return
 
@@ -90,66 +93,69 @@ def month():
     dec = []
     for line in m:
         split_mon = line.split(' ')
-        if "Jan" in split_mon[3]:
-            jan.append(split_mon)
-        elif "Feb" in split_mon[3]:
-            feb.append(split_mon)       
-        elif "Mar" in split_mon[3]:
-            mar.append(split_mon)         
-        elif "Apr" in split_mon[3]:
-            apr.append(split_mon)         
-        elif "May" in split_mon[3]:
-            maay.append(split_mon)        
-        elif "Jun" in split_mon[3]:
-            jun.append(split_mon)        
-        elif "Jul" in split_mon[3]:
-            jul.append(split_mon)        
-        elif "Aug" in split_mon[3]:
-            aug.append(split_mon)     
-        elif "Sep" in split_mon[3]:
-            sep.append(split_mon)
-        elif "Oct" in split_mon[3]:
-            ocp.append(split_mon)               
-        elif "Nov" in split_mon[3]:
-            nov.append(split_mon)
-        elif "Dec" in split_mon[3]:
-            dec.append(split_mon)
+        if len(split_mon) == 10:
+            if "Jan" in split_mon[3]:
+                jan.append(split_mon)
+            elif "Feb" in split_mon[3]:
+                feb.append(split_mon)       
+            elif "Mar" in split_mon[3]:
+                mar.append(split_mon)         
+            elif "Apr" in split_mon[3]:
+                apr.append(split_mon)         
+            elif "May" in split_mon[3]:
+                maay.append(split_mon)        
+            elif "Jun" in split_mon[3]:
+                jun.append(split_mon)        
+            elif "Jul" in split_mon[3]:
+                jul.append(split_mon)        
+            elif "Aug" in split_mon[3]:
+                aug.append(split_mon)     
+            elif "Sep" in split_mon[3]:
+                sep.append(split_mon)
+            elif "Oct" in split_mon[3]:
+                ocp.append(split_mon)               
+            elif "Nov" in split_mon[3]:
+                nov.append(split_mon)
+            elif "Dec" in split_mon[3]:
+                dec.append(split_mon)
+        
     j = open(january, 'w+')
-    j.write(' '.join("".join(x) for x in jan))
+    j.write(''.join(" ".join(x) for x in jan))
     j.close
     f = open(february, 'w+')
-    f.write(' '.join("".join(x) for x in feb))
+    f.write(''.join(" ".join(x) for x in feb))
     f.close
     m = open(march, 'w+')
-    m.write(' '.join("".join(x) for x in mar))
+    m.write(''.join(" ".join(x) for x in mar))
     m.close
     a = open(april, 'w+')
-    a.write(' '.join("".join(x) for x in apr))
+    a.write(''.join(" ".join(x) for x in apr))
     a.close
     ma = open(may, 'w+')
-    ma.write(' '.join("".join(x) for x in maay))
+    ma.write(''.join(" ".join(x) for x in maay))
     ma.close
     jo = open(june, 'w+')
-    jo.write(' '.join("".join(x) for x in jun))
+    jo.write(''.join(" ".join(x) for x in jun))
     jo.close
     ju = open(july, 'w+')
-    ju.write(' '.join("".join(x) for x in jul))
+    ju.write(''.join(" ".join(x) for x in jul))
     ju.close
     au = open(august, 'w+')
-    au.write(' '.join("".join(x) for x in aug))
+    au.write(''.join(" ".join(x) for x in aug))
     au.close
     s = open(september, 'w+')
-    s.write(' '.join("".join(x) for x in sep))
+    s.write(''.join(" ".join(x) for x in sep))
     s.close
     o = open(october, 'w+')
-    o.write(' '.join("".join(x) for x in ocp))
+    o.write(''.join(" ".join(x) for x in ocp))
     o.close
     n = open(november, 'w+')
-    n.write(' '.join("".join(x) for x in nov))
+    n.write(''.join(" ".join(x) for x in nov))
     n.close
     d = open(december, 'w+')
-    d.write(' '.join("".join(x) for x in dec))
-    d.close    
+    d.write(''.join(" ".join(x) for x in dec))
+    d.close
+        
     return
 
 def totalreq():
@@ -459,3 +465,4 @@ def numreqs():
     for i in least[6:9]:
         print("  ",i)
     return
+main()
