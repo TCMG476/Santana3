@@ -72,7 +72,7 @@ def error():
     j.write(''.join(" ".join(x) for x in corrlist))
     j.close()
     e = open(errpath, 'w+')
-    e.write(''.join(" ".join(x) for x in errlist))
+    e.write(''.join(" ".join(y) for y in errlist))
     e.close()    
     print("Done.\nSeparating month logs into respective files...")
     return
