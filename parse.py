@@ -2,6 +2,7 @@ import os
 import platform
 import urllib.request
 import operator
+
 if platform.system() == 'Windows':
     errpath = r'C:\vagrant_getting_started\errors.txt'
     corrpath = r'C:\vagrant_getting_started\correct.txt'
@@ -46,8 +47,7 @@ def main():
     dawemo()
     weekav()
     monthnum()
-    unsuccessful()
-    redirect()
+    statuscode()
     numreqs()
     return data
 
@@ -76,62 +76,80 @@ def error():
 
 def month():
     m=open(corrpath, 'r')
+    jan = []
+    feb = []
+    mar = []
+    apr = []
+    maay = []
+    jun = []
+    jul = []
+    aug = []
+    sep = []
+    ocp = []
+    nov = []
+    dec = []
     for line in m:
         split_mon = line.split(' ')
         if "Jan" in split_mon[3]:
-            j = open(january, 'a+')
-            j.write(" ".join(split_mon))
-            j.close()         
+            jan.append(split_mon)
         elif "Feb" in split_mon[3]:
-            f = open(february, 'a+')
-            f.write(" ".join(split_mon))
-            f.close()         
+            feb.append(split_mon)       
         elif "Mar" in split_mon[3]:
-            mar = open(march, 'a+')
-            mar.write(" ".join(split_mon))
-            mar.close()         
+            mar.append(split_mon)         
         elif "Apr" in split_mon[3]:
-            apr = open(april, 'a+')
-            apr.write(" ".join(split_mon))
-            apr.close()         
+            apr.append(split_mon)         
         elif "May" in split_mon[3]:
-            m = open(may, 'a+')
-            m.write(" ".join(split_mon))
-            m.close()         
+            maay.append(split_mon)        
         elif "Jun" in split_mon[3]:
-            jun = open(june, 'a+')
-            jun.write(" ".join(split_mon))
-            jun.close()         
+            jun.append(split_mon)        
         elif "Jul" in split_mon[3]:
-            jul = open(july, 'a+')
-            jul.write(" ".join(split_mon))
-            jul.close()         
+            jul.append(split_mon)        
         elif "Aug" in split_mon[3]:
-            a = open(august, 'a+')
-            a.write(" ".join(split_mon))
-            a.close()         
+            aug.append(split_mon)     
         elif "Sep" in split_mon[3]:
-            s = open(september, 'a+')
-            s.write(" ".join(split_mon))
-            s.close()         
+            sep.append(split_mon)
         elif "Oct" in split_mon[3]:
-            o = open(october, 'a+')
-            o.write(" ".join(split_mon))
-            o.close()               
+            ocp.append(split_mon)               
         elif "Nov" in split_mon[3]:
-            n = open(november, 'a+')
-            n.write(" ".join(split_mon))
-            n.close() 
+            nov.append(split_mon)
         elif "Dec" in split_mon[3]:
-            d = open(december, 'a+')
-            d.write(" ".join(split_mon))
-            d.close() 
-        else:
-            e = open(errpath, 'a+')
-            e.write(" ".join(split_mon))
-            e.close()
-    print("Done.\nProcessing requests... NOTE: Questions 5 and 6 take "\
-          "longer, please be patient.")
+            dec.append(split_mon)
+    j = open(january, 'w+')
+    j.write(' '.join("".join(x) for x in jan))
+    j.close
+    f = open(february, 'w+')
+    f.write(' '.join("".join(x) for x in feb))
+    f.close
+    m = open(march, 'w+')
+    m.write(' '.join("".join(x) for x in mar))
+    m.close
+    a = open(april, 'w+')
+    a.write(' '.join("".join(x) for x in apr))
+    a.close
+    ma = open(may, 'w+')
+    ma.write(' '.join("".join(x) for x in maay))
+    ma.close
+    jo = open(june, 'w+')
+    jo.write(' '.join("".join(x) for x in jun))
+    jo.close
+    ju = open(july, 'w+')
+    ju.write(' '.join("".join(x) for x in jul))
+    ju.close
+    au = open(august, 'w+')
+    au.write(' '.join("".join(x) for x in aug))
+    au.close
+    s = open(september, 'w+')
+    s.write(' '.join("".join(x) for x in sep))
+    s.close
+    o = open(october, 'w+')
+    o.write(' '.join("".join(x) for x in ocp))
+    o.close
+    n = open(november, 'w+')
+    n.write(' '.join("".join(x) for x in nov))
+    n.close
+    d = open(december, 'w+')
+    d.write(' '.join("".join(x) for x in dec))
+    d.close    
     return
 
 def totalreq():
@@ -391,67 +409,53 @@ def monthnum():
     print("   December had a total of %d requests.\n" %dcount)
     return
 
-def unsuccessful():
+def statuscode():
     f=open(corrpath, 'r')
     count=0
+    count1=0
     file = 0
+    file1=0
     for line in f:
         split_f = line.split(' ')
-        if '40' in split_f[8]:
+        if '4' in split_f[8][0]:
             count+=1
-            file+=1
-        elif '41' in split_f[8]:
-            count+=1
-            file+=1
-        elif '42' in split_f[8]:
-            count+=1
-            file+=1
-        elif '431' in split_f[8]:
-            count+=1
-            file+=1
-        elif '451' in split_f[8]:
-            count+=1
-            file+=1
-        else:
-            file+=1
-    percen= (count/file)*100
-    print("3. A total of %.2f%% of requests were unsuccessful.\n" % percen)
-    return
-
-def redirect():
-    f=open(corrpath, 'r')
-    count=0
-    file=0
-    for line in f:
-        split_f = line.split(' ')
         if '30' in split_f[8]:
-            count+=1
+            count1+=1
+            file1+=1 
             file+=1
         else:
             file+=1
+            file1+=1
     percen= (count/file)*100
-    print("4. A total of %.2f%% of requests were redirected elsewhere.\n" % percen)
+    redir= (count1/file1)*100
+    print("3. A total of %.2f%% of requests were unsuccessful.\n" % percen)
+    print("4. A total of %.2f%% of requests were redirected elsewhere.\n" % redir)
     return
 
 def numreqs():
     lc = open(corrpath, 'r')
     sdict = {}
-    searchlist = []
+    least = []
+    file = 0
     for line in lc:
         split_lc = line.split(' ')
-        if split_lc[6] not in searchlist and split_lc[6] not in sdict:
-            searchlist.append(split_lc[6])
-        elif split_lc[6] in searchlist and split_lc[6] not in sdict:
-            sdict[split_lc[6]] = 2
-            searchlist.remove(split_lc[6])
-        elif split_lc[6] not in searchlist and split_lc[6] in sdict:
-            sdict[split_lc[6]] += 1
-    maximum = max(sdict.items(), key=operator.itemgetter(1))[0]
-    print ("5. The most requested file is", maximum, "which has been requested",\
-           sdict[maximum], "times. \n") 
-    print ("6. Number of files that were only requested once:\n   ", \
-           len(searchlist), "\n   Examples of files with only one request:\n   ", \
-           searchlist[11]+ ",", searchlist[524]+ ", and", searchlist[672]+'.')
+        
+        if split_lc[6] in sdict:
+            sdict[split_lc[6]]+=1
+        else:
+            sdict[split_lc[6]]=1
+            
+    numwords = sorted(sdict, key = sdict.get, reverse = True)
+    mostfile = numwords[:1]
+    for key, value in sdict.items():
+        if value == 1:
+            least.append(key)
+            file+=1
+    print ("5. The most requested file is:")
+    for i in mostfile:
+        print("  ",i)
+    print ("6. Number of files that were only requested once: %d" %file)
+    print ("   A couple of examples include:")
+    for i in least[6:9]:
+        print("  ",i)
     return
-
-main()
